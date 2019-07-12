@@ -1,0 +1,11 @@
+I. Jeśli mamy klasę Dom, a w niej jest konstruktor, to pełni on metaforyczną funkcję dekoratora wnętrz.
+d) dekorator wnętrz
+
+Pozostałe funkcje spełnia:
+a) Projektant domu - klasa?
+b) Geodeta wymierzający działkę, na której ma stanąć dom - kompilator?
+c) Budowniczy konkretnego domu - programista (tworzenie obiektu)
+
+II. Wolno przeładować nazwę konstruktora. Jest to najczęściej przeładowywana funkcja składowa.
+
+III. Konstruktor nie ma typu rezultatu.
