@@ -9,3 +9,40 @@ c) Budowniczy konkretnego domu - programista (tworzenie obiektu)
 II. Wolno przeładować nazwę konstruktora. Jest to najczęściej przeładowywana funkcja składowa.
 
 III. Konstruktor nie ma typu rezultatu.
+
+IV. Jeśli mamy konstruktor klasy K, to może on być wywoływany w celu konstruowania obiektów z przydomkiem const:
+c) dany konstruktor może być użyty przy tworzeniu obiektu const wtedy, gdy wszystkie składniki klasy inicjalizuje za pomocą listy inicjalizacyjnej (a nie w ciele konstruktora)
+
+V. Klasa K, w której jest konstruktor wywoływany jednym argumentem typu double oraz konstruktor domniemany. Która z poniższych nie jest definicją obiektu klasy K? Czym jest w istocie?
+a) K obiektA;
+b) K obiektB = K();
+c) K obiektC(); // to nie jest definicją obiektu - mówimy tylko, że obiektC to nazwa jakiejś funkcji
+d) K obiektD(3.14);
+e) K obiektE = K(3.14);
+
+VI. Kiedy startują konstruktory obiektów:
+- globalnego: jeszcze przed rozpoczęciem wykonywania funkcji main
+- lokalnego (funkcji main()): w momencie, gdy program napotyka definicję tego obiektu
+
+VII. Globalny obiekt klasy K jest dostępny tylko z głownego pliku: aby był dostępny również w innych plikach programu, należy na początku danego pliku zdeklarować jego nazwę wraz z przydomkiem extern (zewnętrzny).
+
+VIII. Zakres ważności nazw i czas życia obiektów:
+— globalny:
+	- plik (zakres pliku) + deklaracja extern w innych plikach
+	- cały czas wykonywania programu
+— lokalny automatyczny:
+	- zakres blokowy {} - od definicji do końca bloku
+— lokalny statyczny:
+	- zakres blokowy {} - od definicji do końca bloku
+	- cały czas wykonywania programu
+— tworzony operatorem new:
+	- od wykonania new do wykonania delete
+	- dostępny tak długo, jak pokazuje na niego choć jeden wskaźnik
+
+IX. Destruktor nie może być wywoływany z żadnymi argumentami, oraz nie może zwracać żadnej wartości (nawet void).
+
+X. Destruktor obiektu nie uruchamia się w momencie jak przestaje na niego pokazywać jakiś wskaźnik lub skończy się czas życia wskaźnika.
+
+XI. Destruktor dla jakiegoś obiektu można wywołać jawnie - nie usunie wtedy obiektu, ale zachowa się jedynie jak "sprzątaczka".
+
+XII. Wolno wywołać destruktor dla obiektu int. Nie jest to zabronione.
