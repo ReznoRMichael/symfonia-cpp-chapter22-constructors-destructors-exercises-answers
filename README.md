@@ -12,8 +12,6 @@ Learning C++. Doing all exercises and answering all questions from Chapter 22 of
 * Notepad++
 * CodeBlocks
 
-## Things to go back after gaining more knowledge
-
 ## Contact
 
 [ReznoRMichael](https://github.com/ReznoRMichael)

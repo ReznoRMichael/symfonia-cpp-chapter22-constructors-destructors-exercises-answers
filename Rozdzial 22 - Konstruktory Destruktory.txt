@@ -45,4 +45,58 @@ X. Destruktor obiektu nie uruchamia się w momencie jak przestaje na niego pokaz
 
 XI. Destruktor dla jakiegoś obiektu można wywołać jawnie - nie usunie wtedy obiektu, ale zachowa się jedynie jak "sprzątaczka".
 
-XII. Wolno wywołać destruktor dla obiektu int. Nie jest to zabronione.
+XII. Wolno wywołać destruktor dla obiektu int. Nie jest to oficjalnie zabronione.
+
+XIII. Konstruktor domniemany - z definicji to taki konstruktor, który można wywołać bez żadnego argumentu. Czyli nawet taki, który ma wszystkie argumenty domniemane!
+
+XIV. Kompilator generuje konstruktor domniemany automatycznie tylko w przypadku, gdy klasa nie ma żadnego konstruktora.
+
+XV. Konstruktor domniemany generowany przez kompilator ma przydomki:
+b) public
+e) inline
+
+XVI. Na liście inicjalizacyjnej konstruktora mogą znaleźć się wyrażenia inicjalizujące niestatyczne składniki klasy z przydomkiem const. (w ciele konstruktora już nie)
+
+XVII. Lista inicjalizacyjna nie może inicjalizować składnika static.
+
+XVIII. Jeśli konstruktor definiowany jest na zewnątrz ciała swojej klasy, to lista inicjalizacyjna konstruktora towarzyszy:
+b) definicji konstruktora
+
+XIX. Kolejność umieszczania składników na liście inicjalizacyjnej nie ma żadnego znaczenia, ale niektóre kompilatory ostrzegają, że itak będzie to przeprowadzone wg porządku w programie.
+
+XX. Kolejność pracy konstruktorów:
+Obiekty składowe wewnątrz klasy, to jakby jej goście. Przy konstruowaniu obiektu — klasa najpierw daje pierwszeństwo gościom, a dopiero potem myśli o swoim konstruktorze.
+1. najpierw wywołuje się konstruktor obiektu gościa pierwszego
+2. potem ew. następne konstruktory gości wg porządku na liście
+3. potem inicjalizacja składników klasy (domowników) wg porządku deklaracji w klasie
+4. potem wykonanie ciała konstruktora danej klasy
+
+XXI. Kolejność pracy destruktorów:
+Odwrotnie niż w przypadku konstruktorów.
+1. najpierw rusza do pracy destruktor klasy
+2. dopiero potem wykonywane są destruktory obiektów składowych
+
+XXII. Składników klasy typu const nie można inicjalizować w ciele konstruktora (jedynie na jego liście inicjalizacyjnej)
+
+XXIII. Na liście inicjalizacyjnej można wywołać funkcje, wyrażenia a nawet funkcje składowe. Jednak w tym ostatnim przypadku trzeba pamiętać o kolejności inicjalizacji poszczególnych składników.
+
+XXIV. Na liście inicjalizacyjnej można posłużyć się wyrażeniem korzystającym z innego składnika. Jednak trzeba pamiętać o kolejności inicjalizacji poszczególnych składników.
+
+XXV. Może istnieć klasa, w której wszystkie konstruktory są private. Trzeba pamiętać że kompilator czasem potrzebuje użyć konstruktora domniemanego niejawnie np. w przypadku definiowania operatorem new tablicy kilku obiektów danej klasy. (wtedy otrzymamy błąd kompilacji)
+
+XXVI. Formy deklaracji konstruktora kopiującego (bez argumentów domniemanych):
+Tklasa::Tklasa( Tklasa & );
+Tklasa::Tklasa( const Tklasa & );
+Tklasa::Tklasa( volatile Tklasa & );
+Tklasa::Tklasa( const volatile Tklasa & );
+
+XXVII. Kiedy zostanie użyty konstruktor kopiujący:
+b) przesłanie do funkcji obiektu klasy K przez wartość
+d) zwrot rezultatu funkcji będącego obiektem klasy K przez wartość 
+
+XXVIII. Konstruktor kopiujący klasy K - aby użyć go do zrobienia kopii obiektu const klasy K = konstruktor kopiujący musi zagwarantować nietykalność takiego obiektu. (Trzeba dodać przydomek const w deklaracji)
+Tklasa::Tklasa( const Tklasa & );
+
+XXIX. Jeśli chcielibyśmy zbudować w klasie K zawierającej składniki const klasy M konstruktor kopiujący, to konstruktor kopiujący klasy M również musi obiecywać nietykalność takich obiektów (const).
+
+XXX. Korzystanie z generowanego automatycznie konstruktora kopiującego może prowadzić do błędów, w przypadku gdy składnikiem (daną składową) danej klasy jest np. wskaźnik. Wtedy dosłowna kopia takiego obiektu byłaby niepożądana.
